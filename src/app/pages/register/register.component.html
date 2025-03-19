@@ -1,0 +1,142 @@
+<section class="bg-slate-200 rounded-md p-4 my-4 w-[90%] mx-auto relative">
+<h1 class="text-emerald-400  font-black text-4xl my-4"> Register:</h1>
+@if (resText) {<span class="bg-red-300 p-3 absolute top-5 end-5 rounded rounded-2">{{resText}}</span>}
+ <form [formGroup]="registerForm " (ngSubmit)="register()">
+    <div class="mb-6">
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">name</label>
+        <input [class]="{
+            'my-valid':!registerForm.get('name')?.errors && (registerForm.get('name')?.touched ||registerForm.get('name')?.dirty),
+            'my-invalid': registerForm.get('name')?.errors && (registerForm.get('name')?.touched ||registerForm.get('name')?.dirty),
+        }"
+         formControlName="name" type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
+    @if (registerForm.get('name')?.errors && registerForm.get('name')?.touched) {
+        <div class="flex p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+            </svg>
+            <span class="sr-only">Danger</span>
+            <div>
+              <span class="font-medium">check errors</span>
+                <ul class="mt-1.5 list-disc list-inside">
+                  @if (registerForm.get('name')?.getError('required')) {  <li>Name input is reequired </li>}
+                 @if (registerForm.get('name')?.getError('minlength')) { <li>name must be at least 3 characters </li>}
+                 @if (registerForm.get('name')?.getError('maxlength')){ <li>name length must be maximum 10 characters </li>}
+                  
+              </ul>
+            </div>
+          </div>
+        }
+    
+    </div>
+    <div class="mb-6">
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">email</label>
+        <input [class]="{
+            'my-valid': !registerForm.get('email')?.errors &&(registerForm.get('email')?.touched ||registerForm.get('email')?.dirty),
+            'my-invalid': registerForm.get('email')?.errors && (registerForm.get('email')?.touched ||registerForm.get('email')?.dirty),
+        }"
+         formControlName="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched) {
+            <div class="flex p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                  <span class="font-medium">check errors</span>
+                    <ul class="mt-1.5 list-disc list-inside">
+                      @if (registerForm.get('email')?.getError('required')) {  <li>email input is reequired </li>}
+                     @if (registerForm.get('email')?.getError('email')) { <li>email format is not correct </li>}
+                    
+                      
+                  </ul>
+                </div>
+              </div>
+            }
+   
+    </div>
+    <div class="mb-6">
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">password</label>
+        <input [class]="{
+            'my-valid': !registerForm.get('password')?.errors && (registerForm.get('password')?.touched ||registerForm.get('password')?.dirty),
+            'my-invalid': registerForm.get('password')?.errors &&( registerForm.get('password')?.touched ||registerForm.get('password')?.dirty),
+        }"
+         formControlName="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+    
+        @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched) {
+            <div class="flex p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                  <span class="font-medium">check errors</span>
+                    <ul class="mt-1.5 list-disc list-inside">
+                      @if (registerForm.get('password')?.getError('required')) {  <li>password input is reequired </li>}
+                     @if (registerForm.get('password')?.getError('pattern')) { <li>password is not correct </li>}
+                    
+                      
+                  </ul>
+                </div>
+              </div>
+            }
+    </div>
+    <div class="mb-6">
+       
+        <label for="rePassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">rePassword</label>
+        <input 
+        [class]="{
+            'my-valid': !registerForm.errors && (registerForm.get('rePassword')?.touched ||registerForm.get('rePassword')?.dirty),
+            'my-invalid': registerForm.errors &&( registerForm.get('rePassword')?.touched ||registerForm.get('rePassword')?.dirty)
+        }"formControlName="rePassword" type="password" id="rePassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+        @if (registerForm.errors && registerForm.get('rePassword')?.touched) {
+            <div class="flex p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                  <span class="font-medium">check errors</span>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (registerForm.get('rePassword')?.getError('required')) {  <li>rePassword input is reequired </li>}
+                        @if (registerForm.errors && registerForm.get('rePassword')?.touched)  { <li>password not match !! </li>}
+                      
+                  </ul>
+                </div>
+              </div>
+            }
+   
+    </div>
+    <div class="mb-6">
+        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">phone</label>
+        <input [class]="{
+            'my-valid': !registerForm.get('phone')?.errors &&( registerForm.get('phone')?.touched ||registerForm.get('phone')?.dirty),
+            'my-invalid': registerForm.get('phone')?.errors &&(registerForm.get('phone')?.touched ||registerForm.get('phone')?.dirty)
+        }"
+         formControlName="phone" type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+   
+        @if (registerForm.get('phone')?.errors && registerForm.get('phone')?.touched) {
+            <div class="flex p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only  ">Danger</span>
+                <div>
+                  <span class="font-medium">check errors</span>
+                    <ul class="mt-1.5 list-disc list-inside">
+                      @if (registerForm.get('phone')?.getError('required')) {  <li>phone input is reequired </li>}
+                     @if (registerForm.get('phone')?.getError('pattern')) { <li>phone format is not correct </li>}
+                  
+                      
+                  </ul>
+                </div>
+              </div>
+            }
+    </div>
+    <button class="my-button  rounded-md bg-emerald-400 p-2 text-xl text-white w-full hover:bg-emerald-500 hover:shadow-lg transition-all duration-300">signUp @if (loading) {<span><i class="fa-solid fa-spinner fa-spin"></i></span>}
+        @if (!loading) { <span><i class="fa-solid fa-user-plus"></i></span>}</button>
+</form>
+
+ 
+
+
+</section>

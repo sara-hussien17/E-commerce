@@ -1,0 +1,27 @@
+@if (wishListData !=null) {<section class="bg-slate-100 rounded-md shadow-md p-4 my-4 mx-auto w-2/3">
+    <h1 class="font-black text-4xl text-emerald-400 my-3"> My Wish List</h1>
+   
+    <div class="container mx-auto w-[90%]">
+     @for (item of wishListData ; track item.id) {
+          <div class="flex flex-wrap justify-between items-center border-b-4 border-gray-400">
+        <div class="w-full sm:w-1/5">
+            <div class="p-img">
+                <img [src]="item.imageCover" [alt]="item.title" class="w-full object-contain">
+            </div>
+        </div>
+        <div class="w-full sm:w-1/2 flex items-center center">
+            <div class="p-desc">
+                <h1 class="font-black text-3xl  my-3">{{item.title}}</h1>
+                <h2 class="font-black text-2xl  text-emerald-400 my-3">Price:{{item.price}}</h2>
+                <h3 (click)="deletItemFromWishList(item._id)" class="cursor-pointer text-red-600 my-3" > Remove <span><i class="fa-solid fa-trash"></i></span></h3>
+            </div>
+            <button (click)="addToCart(item._id)" class=" btn-main ">Add To Cart</button>
+        </div>
+    
+        </div>}
+
+        
+    
+    </div>
+    </section>}
+

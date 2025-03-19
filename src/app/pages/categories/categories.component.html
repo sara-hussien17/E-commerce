@@ -1,0 +1,29 @@
+<section class="my-4 p-4">
+  
+<div class="container p-4 w-[90%] mx-auto">
+    
+    
+  <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+    @for (category of categoriesData; track category._id) {
+   
+  <div class="flex items-center center text-center product cursor-pointer">
+    <div class="w-full">
+        
+    
+            
+          <img [src]="category.image" [alt]="category.name" class="h-[300px] w-full ">
+        
+        <div class="m-4 mx-auto py-2">
+            <h1 class="font-extrabold text-main text-3xl  ">{{category.name}}</h1>
+        
+        </div>
+    </div>
+</div>}
+</div>
+</div>
+       
+    
+
+
+
+</section>

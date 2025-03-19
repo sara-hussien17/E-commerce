@@ -1,0 +1,77 @@
+
+<section class="p-4 my-5">
+    <div class="container w-[90%] mx-auto">
+
+        <div class="flex flex-wrap w-[65%] mx-auto ">
+            <div class="w-full sm:w-full md:w-1/2 lg:w-3/5 ">  
+                <owl-carousel-o [options]="MainSliderOptions">
+                    <ng-template carouselSlide><img src="./images/img1.avif" alt=""  class="h-80"></ng-template>  
+                    <ng-template carouselSlide><img src="./images/img2.avif" alt=""  class="h-80"> </ng-template>  
+                    <ng-template carouselSlide> <img src="./images/img3.avif" alt=""  class="h-80"></ng-template>  
+                    <ng-template carouselSlide> <img src="./images/img4.avif" alt=""  class="h-80"></ng-template>
+                    <ng-template carouselSlide> <img src="./images/img5.avif" alt=""  class="h-80"></ng-template>
+                    <ng-template carouselSlide> <img src="./images/img6.avif" alt=""  class="h-80"></ng-template>
+                  </owl-carousel-o>
+            </div>
+            <div class="w-full sm:w-full md:w-1/2 lg:w-2/5 ">  
+        <img  src="./images/grocery-banner-2.jpeg" alt=""  class="h-40 ">
+        <img src="./images/grocery-banner.png" alt="" class="h-40 " >
+            </div>
+
+        </div>
+        
+    </div>
+</section>
+
+@if (productsData !=null && categoriesData != null) {
+<section class="p-4 my-5 ">
+    <div class="container w-[90%] mx-auto">
+
+<owl-carousel-o [options]="categoriesSliderOptions">
+@for (category of categoriesData; track category._id) {
+    <ng-template carouselSlide >
+      <img [src]="category.image" [alt]="category.name " class="h-[250px] w-full">
+    </ng-template>
+}
+</owl-carousel-o>
+
+
+    </div>
+
+</section>
+
+
+<section class="my-4 p-4">
+    <input [(ngModel)]="saerchValue" type="text" placeholder="search by name " class="p-2 mb-4 block mx-auto rounded w-[50%]">
+<div class="container p-4 w-[90%] mx-auto">
+    
+
+  <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+      
+@for (product of productsData |search : saerchValue; track product._id) {
+    <div class="product p-4 cursor-pointer ">
+
+        <div  [routerLink]="['/product-details',product._id]" >
+        <div class="mt-4">
+            <img [src]="product.imageCover" [alt]="product.title">
+        </div>
+        <div class="mt-4">
+            <h2 class="font-black text-main">{{product.category.name}}</h2>
+            <h1>{{product.title.split(' ').slice(0,3).join(' ')}}</h1>
+        </div>
+<div class="flex mt-4 flex-wrap justify-between items-center">
+<h3>{{product.price}}</h3>
+<span>  <i class="rating-color fa-solid fa-star"> </i>{{product.ratingsAverage}}</span> 
+    </div> 
+</div>
+
+<div><span><i (click)="AddToWishList(product._id)" class="fa-solid fa-heart h-5 text-2xl ms-[75%]"></i></span></div>
+        <div class="mt-4">
+            <button (click)="addToCart(product._id)" class="btn-main w-full">Add to card</button>
+        </div> 
+    </div>}
+
+    </div>
+</div>
+</section>
+}

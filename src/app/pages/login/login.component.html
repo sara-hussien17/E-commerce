@@ -1,0 +1,62 @@
+<section class="bg-slate-200 rounded-md p-4 my-4 w-[90%] mx-auto ">
+    <h1 class="text-emerald-400 font-black text-4xl my-4"> Login:</h1>
+     <form [formGroup]="loginForm " (ngSubmit)="login()" >
+       
+        <div class="mb-6">
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">email</label>
+            <input  [class]="{
+                'my-valid':!loginForm.get('email')?.errors && (loginForm.get('email')?.touched ||loginForm.get('email')?.dirty),
+                'my-invalid': loginForm.get('email')?.errors && (loginForm.get('email')?.touched ||loginForm.get('email')?.dirty),
+            }"
+            formControlName="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            @if (loginForm.get('email')?.errors && loginForm.get('email')?.touched) {
+                <div class="flex p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    </svg>
+                    <span class="sr-only">Danger</span>
+                    <div>
+                      <span class="font-medium">check errors</span>
+                        <ul class="mt-1.5 list-disc list-inside">
+                            @if (loginForm.get('email')?.getError('required')) {  <li>email input is reequired </li>}
+                            @if (loginForm.get('email')?.getError('email')) { <li>email format is not correct </li>}
+                           
+                      </ul>
+                    </div>
+                  </div>
+                }
+            
+        </div>
+        <div class="mb-6">
+            <label for="Password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+            <input  [class]="{
+                'my-valid': !loginForm.get('password')?.errors && (loginForm.get('password')?.touched ||loginForm.get('password')?.dirty),
+                'my-invalid': loginForm.get('password')?.errors &&( loginForm.get('password')?.touched ||loginForm.get('password')?.dirty),
+            }"
+            formControlName="password" type="password" id="Password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+            @if (loginForm.get('password')?.errors && loginForm.get('password')?.touched) {
+                <div class="flex p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                    <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    </svg>
+                    <span class="sr-only">Danger</span>
+                    <div>
+                      <span class="font-medium">check errors</span>
+                        <ul class="mt-1.5 list-disc list-inside">
+                          @if (loginForm.get('password')?.getError('required')) {  <li>password input is reequired </li>}
+                         @if (loginForm.get('password')?.getError('pattern')) { <li>password is not correct </li>}
+                        </ul>
+                    </div>
+                  </div>
+                }
+        </div>
+        <a routerLink="/forget" class=" text-blue-500 hover:underline mb-6 ">forgetPassword</a>
+        <button class="my-button rounded-md bg-emerald-400 p-2 text-xl text-white w-full hover:bg-emerald-500 hover:shadow-lg transition-all duration-300">Login @if (loading) {<span><i class="fa-solid fa-spinner fa-spin"></i></span>}
+            @if (!loading) { <span><i class="fa-solid fa-user-plus"></i></span>}</button>
+           
+    </form>
+    
+     
+    
+    
+    </section>

@@ -1,0 +1,37 @@
+@if (cartData !=null) {<section class="bg-slate-100 rounded-md shadow-md p-4 my-4 mx-auto w-2/3">
+    <h1 class="font-black text-4xl text-emerald-400 my-3"> cart</h1>
+    <h3 class="font-black text-2xl text-emerald-400 my-3">total Cart Price: @if (cartData.totalCartPrice!=0) {{{cartData.totalCartPrice | currency:'GBP'}}}@else {0 EGP}</h3>
+    
+    <div class="container mx-auto w-[90%]">
+     @for (product of cartData.products; track product.product) {
+          <div class="flex flex-wrap justify-between items-center border-b-4 border-gray-400">
+        <div class="w-full sm:w-1/5">
+            <div class="p-img">
+                <img [src]="product.product.imageCover" alt="" class="w-full object-contain">
+            </div>
+        </div>
+        <div class="w-full sm:w-1/2">
+            <div class="p-desc">
+                <h1 class="font-black text-3xl  my-3">{{product.product.title}}</h1>
+                <h2 class="font-black text-2xl  text-emerald-400 my-3">Price:{{product.price}}</h2>
+                <h3 (click)="deletItemFromCart(product.product._id)" class="cursor-pointer text-red-600 my-3" > Remove <span><i class="fa-solid fa-trash"></i></span></h3>
+            </div>
+        </div>
+    
+        <div class="w-full sm:w-1/5">
+            <div class="count flex flex-wrap justify-between text-2xl text-emerald-400 ">
+       <span><i (click)="updateCount(product.product._id, product.count +1)" class="fa-solid fa-plus"></i></span>
+       <h3>{{product.count}}</h3>
+    @if (product.count>1) {   <span><i (click)="updateCount(product.product._id, product.count -1)" class="fa-solid fa-minus"></i></span>
+    }
+            </div>
+        </div>
+    
+        </div>}
+@if (cartData.products.length>0) {<div class="my-3">
+    <button [routerLink]="['/checout',cartData._id]" class="btn-main w-full">Check Out</button>
+</div>}
+        
+    
+    </div>
+    </section>}

@@ -1,0 +1,35 @@
+<section class="bg-slate-200 rounded-md p-4 my-4 w-[90%] mx-auto ">
+    <form [formGroup]="detailsForm" (ngSubmit)="detailsSubmit()" >
+        <div class="mb-6">
+            <label for="details" class="block mb-2 text-sm font-medium text-gray-900">details</label>
+            <input  [class]="{
+                'my-valid':!detailsForm.get('details')?.errors && detailsForm.get('details')?.touched ,
+                'my-invalid': detailsForm.get('details')?.errors && detailsForm.get('details')?.touched 
+            }"
+                formControlName="details" type="text" id="details" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          
+        </div>
+
+        <div class="mb-6">
+            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">phone</label>
+            <input  [class]="{
+                'my-valid':!detailsForm.get('phone')?.errors && detailsForm.get('phone')?.touched ,
+                'my-invalid': detailsForm.get('phone')?.errors && detailsForm.get('phone')?.touched ,
+            }"
+                formControlName="phone" type="text" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          
+        </div>
+
+
+        <div class="mb-6">
+            <label for="city" class="block mb-2 text-sm font-medium text-gray-900">city</label>
+            <input  [class]="{
+                'my-valid':!detailsForm.get('city')?.errors && detailsForm.get('city')?.touched,
+                'my-invalid': detailsForm.get('city')?.errors && detailsForm.get('city')?.touched ,
+            }"
+                formControlName="city" type="text" id="city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          
+        </div>
+<button class="btn-main w-full"> Paymint <span><i class="fa-brands fa-cc-visa"></i></span></button>
+    </form>
+</section>

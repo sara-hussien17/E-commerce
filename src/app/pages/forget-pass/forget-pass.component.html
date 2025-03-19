@@ -1,0 +1,123 @@
+<section class="bg-slate-200 rounded-md p-4 my-4 w-[90%] mx-auto ">
+    
+    <h1 class="text-emerald-400 font-black text-4xl my-4"> Forget password</h1>
+   @if (step==1) {
+    <form  [formGroup]="verifayEmail" (ngSubmit)="verifayEmailSupmit()">
+    <div class="mb-6">
+        
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">email</label>
+        <input  [class]="{
+            'my-valid':!verifayEmail.get('email')?.errors && (verifayEmail.get('email')?.touched ||verifayEmail.get('email')?.dirty),
+            'my-invalid': verifayEmail.get('email')?.errors && (verifayEmail.get('email')?.touched ||verifayEmail.get('email')?.dirty),
+        }"
+        formControlName="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        @if (verifayEmail.get('email')?.errors && verifayEmail.get('email')?.touched) {
+            <div class="flex p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                  <span class="font-medium">check errors</span>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (verifayEmail.get('email')?.getError('required')) {  <li>email input is reequired </li>}
+                        @if (verifayEmail.get('email')?.getError('email')) { <li>email format is not correct </li>}
+                       
+                  </ul>
+                </div>
+              </div>
+            }
+    </div>
+            <button  class="my-button rounded-md bg-emerald-400 p-2 text-xl text-white disabled:my-invalid  hover:bg-emerald-500 hover:shadow-lg transition-all duration-300"> verifay Email 
+          
+            </button>
+        </form>}
+@else if (step == 2) {
+        <form  [formGroup]="verifayCode" (ngSubmit)=" verifayCodeSupmit()">
+            <div class="mb-6">
+                
+                <label for="resetCode" class="block mb-2 text-sm font-medium text-gray-900">Code</label>
+                <input  [class]="{
+                    'my-valid':!verifayCode.get('resetCode')?.errors && (verifayCode.get('resetCode')?.touched ||verifayCode.get('resetCode')?.dirty),
+                    'my-invalid': verifayCode.get('resetCode')?.errors && (verifayCode.get('resetCode')?.touched ||verifayCode.get('resetCode')?.dirty),
+                }"
+                formControlName="resetCode" type="text" id="resetCode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                @if (verifayCode.get('resetCode')?.errors && verifayCode.get('resetCode')?.touched) {
+                    <div class="flex p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+                        <span class="sr-only">Danger</span>
+                        <div>
+                          <span class="font-medium">check errors</span>
+                            <ul class="mt-1.5 list-disc list-inside">
+                                @if (verifayCode.get('resetCode')?.getError('required')) {  <li>code input is reequired </li>}
+                                @if (verifayCode.get('resetCode')?.getError('pattern')) { <li> code format is not correct </li>}
+                               
+                          </ul>
+                        </div>
+                      </div>
+                    }
+            </div>
+                    <button  class="my-button rounded-md bg-emerald-400 p-2 text-xl text-white disabled:my-invalid  hover:bg-emerald-500 hover:shadow-lg transition-all duration-300"> verifay Code 
+                  
+                    </button>
+                </form>}
+@else if (step == 3) {
+                <form  [formGroup]="resetPassword" (ngSubmit)="resetPasswordSupmit()">
+                    <div class="mb-6">
+                        
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">email</label>
+                        <input  [class]="{
+                            'my-valid':!resetPassword.get('email')?.errors && (resetPassword.get('email')?.touched ||resetPassword.get('email')?.dirty),
+                            'my-invalid': resetPassword.get('email')?.errors && (resetPassword.get('email')?.touched ||resetPassword.get('email')?.dirty),
+                        }"
+                        formControlName="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        @if (resetPassword.get('email')?.errors && resetPassword.get('email')?.touched) {
+                            <div class="flex p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                                </svg>
+                                <span class="sr-only">Danger</span>
+                                <div>
+                                  <span class="font-medium">check errors</span>
+                                    <ul class="mt-1.5 list-disc list-inside">
+                                        @if (resetPassword.get('email')?.getError('required')) {  <li>password input is reequired </li>}
+                                        @if (resetPassword.get('email')?.getError('email')) { <li>password format is not correct </li>}
+                                       
+                                  </ul>
+                                </div>
+                              </div>
+                            }
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="newPassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">newPassword</label>
+                        <input  [class]="{
+                            'my-valid': !resetPassword.get('newPassword')?.errors && (resetPassword.get('newPassword')?.touched ||resetPassword.get('newPassword')?.dirty),
+                            'my-invalid': resetPassword.get('newPassword')?.errors &&( resetPassword.get('newPassword')?.touched ||resetPassword.get('newPassword')?.dirty),
+                        }"
+                        formControlName="newPassword" type="password" id="Password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        @if (resetPassword.get('newPassword')?.errors && resetPassword.get('newPassword')?.touched) {
+                            <div class="flex p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                                </svg>
+                                <span class="sr-only">Danger</span>
+                                <div>
+                                  <span class="font-medium">check errors</span>
+                                    <ul class="mt-1.5 list-disc list-inside">
+                                      @if (resetPassword.get('newPassword')?.getError('required')) {  <li>password input is reequired </li>}
+                                     @if (resetPassword.get('newPassword')?.getError('pattern')) { <li>password is not correct </li>}
+                                    </ul>
+                                </div>
+                              </div>
+                            }
+                    </div>
+
+
+                            <button  class="my-button rounded-md bg-emerald-400 p-2 text-xl text-white disabled:my-invalid  hover:bg-emerald-500 hover:shadow-lg transition-all duration-300"> verifay Email 
+                          
+                            </button>
+                        </form>}
+</section>

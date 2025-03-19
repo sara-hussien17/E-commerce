@@ -1,0 +1,33 @@
+<section class="my-4 p-4">
+  
+    <div class="container p-4 w-[90%] mx-auto">
+
+        <div class=" flex text-center center items-center justify-center">
+     <div class=" pb-8"> <div> <h1 class="font-extrabold text-main text-4xl text-center ">All Brands</h1> </div>
+    </div>
+</div>
+
+
+
+
+
+      <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        @for (brand of brandsData; track brand._id) {
+       
+      <div class="flex items-center center text-center product cursor-pointer">
+        <div class="w-full">
+            
+        
+                
+              <img [src]="brand.image" [alt]="brand.name" class="h-[150px] w-full ">
+            
+            <div class="m-4 mx-auto py-2">
+                <h1 class="font-normal  text-xl  ">{{brand.name}}</h1>
+            
+            </div>
+        </div>
+    </div>}
+    </div>
+   
+        </div>   
+</section>
