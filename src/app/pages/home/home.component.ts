@@ -124,6 +124,8 @@ AddToWishList(p_id:string):void{
       })
     },error:(err)=>{
       console.log(err);
+      this.toastr.error(err.message ,'FreshCart',{
+        closeButton:true,})
       
     }
   })

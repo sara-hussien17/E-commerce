@@ -17,6 +17,7 @@ export const routes: Routes = [
 
     
     {path:'' ,component:AuthComponent , children:[
+     
         {path:'login', component:LoginComponent,title:'login'},
         {path:'register', loadComponent:()=>import('./pages/register/register.component').then((c)=>c.RegisterComponent),title:'register'} ,
         {path:'forget', loadComponent:()=>import('./pages/forget-pass/forget-pass.component').then((c)=>c.ForgetPassComponent),title:'forgetPassword'} 
