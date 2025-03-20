@@ -11,6 +11,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthComponent } from './layout/auth-layout/auth/auth.component';
 import { MainComponent } from './layout/main-layout/main/main.component';
 import { authGuard } from './core/guards/auth.guard';
+import { RenderMode } from '@angular/ssr';
 
 export const routes: Routes = [
 
@@ -28,9 +29,9 @@ export const routes: Routes = [
         {path:'brands',  loadComponent:()=>import('./pages/brands/brands.component').then((c)=>c.BrandsComponent),title:'brands'},
         {path:'cart',  loadComponent:()=>import('./pages/cart/cart.component').then((c)=>c.CartComponent),title:'cart'},
         {path:'wishList',  loadComponent:()=>import('./pages/wish-list/wish-list.component').then((c)=>c.WishListComponent),title:'wish list'},
-        {path:'allorders',  loadComponent:()=>import('./pages/allorders/allorders.component').then((c)=>c.AllordersComponent),title:'All ordars'},
-        {path:'checout/:c_id',  loadComponent:()=>import('./pages/checout/checout.component').then((c)=>c.ChecoutComponent),title:'checout'},
-        {path:'product-details/:p_id',  loadComponent:()=>import('./pages/product-details/product-details.component').then((c)=>c.ProductDetailsComponent),title:'Details'},
+        {path:'allorders',  loadComponent:()=>import('./pages/allorders/allorders.component').then((c)=>c.AllordersComponent),title:'All ordars',},
+        {path:'checout/:c_id',  loadComponent:()=>import('./pages/checout/checout.component').then((c)=>c.ChecoutComponent),title:'checout', data:{RenderMode:'server'}},
+        {path:'product-details/:p_id',  loadComponent:()=>import('./pages/product-details/product-details.component').then((c)=>c.ProductDetailsComponent),title:'Details', data:{RenderMode:'server'}},
         {path:'**', component:NotFoundComponent,title:'Eror 404'},
     ]},
 
