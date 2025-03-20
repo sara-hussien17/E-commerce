@@ -30,8 +30,8 @@ export const routes: Routes = [
         {path:'cart',  loadComponent:()=>import('./pages/cart/cart.component').then((c)=>c.CartComponent),title:'cart'},
         {path:'wishList',  loadComponent:()=>import('./pages/wish-list/wish-list.component').then((c)=>c.WishListComponent),title:'wish list'},
         {path:'allorders',  loadComponent:()=>import('./pages/allorders/allorders.component').then((c)=>c.AllordersComponent),title:'All ordars',},
-        {path:'checout/:c_id',  loadComponent:()=>import('./pages/checout/checout.component').then((c)=>c.ChecoutComponent),title:'checout', data:{RenderMode:'server'}},
-        {path:'product-details/:p_id',  loadComponent:()=>import('./pages/product-details/product-details.component').then((c)=>c.ProductDetailsComponent),title:'Details', data:{RenderMode:'server'}},
+        {path:'checout/:c_id',  loadComponent:()=>import('./pages/checout/checout.component').then((c)=>c.ChecoutComponent),title:'checout',},
+        {path:'product-details/:p_id',  loadComponent:()=>import('./pages/product-details/product-details.component').then((c)=>c.ProductDetailsComponent),title:'Details', },
         {path:'**', component:NotFoundComponent,title:'Eror 404'},
     ]},
 
